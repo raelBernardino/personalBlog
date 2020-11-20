@@ -31,7 +31,7 @@ export const BlogHeader = ({
             {subtitle.toUpperCase()}
           </Typography>
           <Typography color="white" weight="200" size="md">
-            {title.toUpperCase()}
+            BOT WITH A BLOG >.>
           </Typography>
         </Container>
       </Overlay>
