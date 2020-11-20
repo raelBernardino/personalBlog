@@ -4,6 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Container } from '../components/atoms'
 import { BlogHeader } from '../components/blog'
 import { optionsTypography } from '../components/options'
+import './style.css'
 
 const BlogTemplate = ({ data }) => {
   console.log({ data });
