@@ -27,6 +27,7 @@ const BlogTemplate = ({ data }) => {
   const isNavOpen = useRecoilValue(isNavOpenAtom);
   useEffect(() => {
     if (data) setCopiedData(data)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
   console.log({ data, copiedData });
   return (
