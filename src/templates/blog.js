@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Container } from '../components/atoms'
+import { useRecoilValue, useRecoilState } from 'recoil';
+
+import { dataAtom, isNavOpenAtom } from '../recoil/atoms'
+import { Container, Nav, NavDrawer } from '../components/atoms'
 import { BlogHeader } from '../components/blog'
 import { optionsTypography } from '../components/options'
 import './style.css'
 
+const PageContainer = styled(Container)`
+  overflow-y: ${p => p.overflowY};
+`;
+
 const BlogTemplate = ({ data }) => {
-  console.log({ data });
   const {
     image,
     title,
@@ -16,8 +23,21 @@ const BlogTemplate = ({ data }) => {
     createdAt,
     blogContent
   } = data.post
+  const [copiedData, setCopiedData] = useRecoilState(dataAtom)
+  const isNavOpen = useRecoilValue(isNavOpenAtom);
+  useEffect(() => {
+    if (data) setCopiedData(data)
+  }, [data])
+  console.log({ data, copiedData });
   return (
-    <Container padding="0">
+    <PageContainer padding="0" overflowY={isNavOpen && "hidden"}>
+      <Nav
+        width="25px"
+        widthHalf="12.5px"
+        justifyContentTop="flex-start"
+        justifyContentBot="flex-end"
+      />
+      <NavDrawer isNavOpen={isNavOpen} />
       <BlogHeader
         image={image}
         title={title}
@@ -30,27 +50,27 @@ const BlogTemplate = ({ data }) => {
           documentToReactComponents(blogContent.json, optionsTypography)
         }
       </Container>
-    </Container>
+    </PageContainer>
   )
 }
 
 export default BlogTemplate;
 
 export const blogTemplateQuery = graphql`
-  query($slug: String!) {
-    post: contentfulPost(slug: {eq: $slug}) {
-      title
-      subtitle
-      author
-      createdAt(formatString: "MMMM Do, YYYY")
-      blogContent {
-        json
-      }
-      image {
-        fluid(quality: 100) {
-          src
-        }
+query($slug: String!) {
+  post: contentfulPost(slug: { eq: $slug }) {
+    title
+    subtitle
+    author
+    createdAt(formatString: "MMMM Do, YYYY")
+    blogContent {
+      json
+    }
+    image {
+      fluid(quality: 100) {
+        src
       }
     }
   }
+}
 `

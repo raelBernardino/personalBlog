@@ -17,21 +17,21 @@ export const BlogHeader = ({
   createdAt }) => (
     <Image src={image.fluid.src} width="100%" height="50vh" size="cover">
       <Overlay>
-        <Typography color="white" weight="200" size="xs">
+        <Typography color="white" weight="300" size="xs">
           WRITTEN BY
       </Typography>
-        <Typography color="white" weight="200" size="xs">
+        <Typography color="white" weight="300" size="xs">
           {author.toUpperCase()}
         </Typography>
         <Container padding="0" justifyContent="flex-end">
-          <Typography color="white" weight="200" size="xs">
+          <Typography color="white" weight="300" size="xs">
             {createdAt.toUpperCase()}
           </Typography>
           <Typography color="white" weight="900" size="xl">
             {subtitle.toUpperCase()}
           </Typography>
-          <Typography color="white" weight="200" size="md">
-            BOT WITH A BLOG >.>
+          <Typography color="white" weight="300" size="md">
+            {title.toUpperCase()}
           </Typography>
         </Container>
       </Overlay>
