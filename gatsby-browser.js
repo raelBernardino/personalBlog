@@ -8,6 +8,6 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 
-export const wrapRootElement = ({ element }) => (
-    <RecoilRoot>{element}</RecoilRoot>
+export const wrapRootElement = ({ element, props }) => (
+    <RecoilRoot {...props}>{element}</RecoilRoot>
 )
