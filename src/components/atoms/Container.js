@@ -10,4 +10,5 @@ export const Container = styled.div`
   justify-content: ${p => p.justifyContent};
   padding: ${p => p.padding || "20px"};
   box-sizing: border-box;
+  overflow-x: hidden;
 `;

@@ -35,7 +35,6 @@ const Burger = styled.div`
 export const Nav = ({ width, widthHalf, justifyContentTop, justifyContentBot }) => {
 	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
 	const toggleNav = () => setIsNavOpen(!isNavOpen);
-	console.log({isNavOpen})
 	return (
 		<Burger onClick={toggleNav}>
 			<BarContainer justifyContent={justifyContentTop}>

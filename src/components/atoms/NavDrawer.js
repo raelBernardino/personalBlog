@@ -1,6 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { isNavOpenAtom } from '../../recoil/atoms';
 import { Container, Typography } from './'
+
+const drawerFadeAnimation = keyframes`
+	0%   { background: transparent }
+	100%  { background: rgba(0, 0, 0, .25)}
+`;
+
+const drawerFadeOutAnimation = keyframes`
+	0%  { background: rgba(0, 0, 0, .25)}
+	100%   { background: transparent }
+`;
 
 const Drawer = styled.div`
 	width: 100%;
@@ -22,6 +33,10 @@ const DrawerContainer = styled.div`
 	position: fixed;
 	overflow: hidden;
 	z-index: 1;
+	animation-name: ${p => p.isNavOpen ? drawerFadeAnimation : drawerFadeOutAnimation};
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 `
 
 const NavContent = styled(Container)`
@@ -32,8 +47,9 @@ const NavContent = styled(Container)`
 
 export const NavDrawer = ({ isNavOpen }) => {
 	const [subNavIsOpen, setSubNavIsOpen] = React.useState(false);
+
 	return (
-		<DrawerContainer>
+		<DrawerContainer isNavOpen={isNavOpen}>
 			<Drawer isNavOpen={isNavOpen}>
 				<Container>
 					<Typography size="xl" color="black" weight="900" padding="0 0 20px 0">EXPLORE</Typography>

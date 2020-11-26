@@ -29,9 +29,8 @@ const BlogTemplate = ({ data }) => {
     if (data) setCopiedData(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
-  console.log({ data, copiedData });
   return (
-    <PageContainer padding="0" overflowY={isNavOpen && "hidden"}>
+    <>
       <Nav
         width="25px"
         widthHalf="12.5px"
@@ -39,19 +38,21 @@ const BlogTemplate = ({ data }) => {
         justifyContentBot="flex-end"
       />
       <NavDrawer isNavOpen={isNavOpen} />
-      <BlogHeader
-        image={image}
-        title={title}
-        subtitle={subtitle}
-        author={author}
-        createdAt={createdAt}
-      />
-      <Container>
-        {
-          documentToReactComponents(blogContent.json, optionsTypography)
-        }
-      </Container>
-    </PageContainer>
+      <PageContainer padding="0" overflowY={isNavOpen && "hidden"}>
+        <BlogHeader
+          image={image}
+          title={title}
+          subtitle={subtitle}
+          author={author}
+          createdAt={createdAt}
+        />
+        <Container>
+          {
+            documentToReactComponents(blogContent.json, optionsTypography)
+          }
+        </Container>
+      </PageContainer>
+    </>
   )
 }
 
