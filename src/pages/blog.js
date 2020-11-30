@@ -35,18 +35,30 @@ const NoBlogsContainer = styled(Container)`
 export default ({ data }) => {
 	const isNavOpen = useRecoilValue(isNavOpenAtom);
 	const [filteredPosts, setFilteredPosts] = useState([])
+	const [currentTag, setCurrentTag] = useState("all")
 	const posts = data.allContentfulPost.edges
 	const bannerImage = posts[0].node.image.fluid.src
 	const tags = data.allContentfulBlogTags.edges
+
+	console.log(tags)
 
 	useEffect(() => {
 		data && setFilteredPosts(posts)
 	}, [data])
 
+
+	console.log({ currentTag })
+
 	const filterPosts = (tag) => {
 		let tempFilteredPost = posts
-		if (tag === "all") setFilteredPosts(tempFilteredPost)
-		else setFilteredPosts(tempFilteredPost.filter(post => post.node.tag === tag))
+		if (tag === "all") {
+			setFilteredPosts(tempFilteredPost)
+			setCurrentTag("all")
+		}
+		else {
+			setFilteredPosts(tempFilteredPost.filter(post => post.node.tag === tag))
+			setCurrentTag(tag)
+		}
 	}
 
 	return (
@@ -63,17 +75,18 @@ export default ({ data }) => {
 				<BlogBanner url={bannerImage} />
 				<Container padding="0" minHeight="80px">
 					<ChipContainer>
-						<Chip label="ALL" onClick={() => filterPosts("all")} />
+						<Chip label="ALL" onClick={() => filterPosts("all")} isSelected={"all" === currentTag ? true : false}/>
 						{
 							tags.map((tag, index) => (
 								<Chip
 									label={tag.node.blogTag.toUpperCase()}
 									key={index}
 									onClick={() => filterPosts(tag.node.blogTag)}
+									isSelected={tag.node.blogTag === currentTag ? true : false}
 								/>
 							))
 						}
-					</ChipContainer>
+					</ChipContainer>					
 					{
 						filteredPosts.length > 0 ?
 							filteredPosts.map((post, i) => {
@@ -119,6 +132,7 @@ export const blogPageQuery = graphql`
 			edges {
 				node {
 					blogTag
+					isSelected
 				}
 			}
 		}
