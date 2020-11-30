@@ -8,6 +8,8 @@ export const Container = styled.div`
   font-family: 'Noto Sans TC', sans-serif;
   position: relative;
   justify-content: ${p => p.justifyContent};
+  align-items: ${p => p.alignItems};
+  min-height: ${p => p.minHeight};
   padding: ${p => p.padding || "20px"};
   box-sizing: border-box;
   overflow-x: hidden;

@@ -34,7 +34,7 @@ const Burger = styled.div`
 
 export const Nav = ({ width, widthHalf, justifyContentTop, justifyContentBot }) => {
 	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
-	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
+	const [, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
 	const toggleNav = () => {
 		setIsNavOpen(!isNavOpen);
 		if (isNavOpen) {

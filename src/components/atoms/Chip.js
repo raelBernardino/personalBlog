@@ -14,8 +14,8 @@ export const ChipContainer = styled.div`
   align-items: center;
 `;
 
-export const Chip = ({ isSelected, label }) => (
-  <ChipContainer isSelected={isSelected}>
+export const Chip = ({ isSelected, label, onClick }) => (
+  <ChipContainer isSelected={isSelected} onClick={onClick}>
     <Typography size="xs" weight="900">{label}</Typography>
   </ChipContainer>
 )

@@ -5,14 +5,13 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 import { dataAtom, isNavOpenAtom } from '../recoil/atoms'
-import { Container, Nav, NavDrawer } from '../components/atoms'
+import { Container, Nav, NavDrawer, Footer } from '../components/atoms'
 import { BlogHeader } from '../components/blog'
 import { optionsTypography } from '../components/options'
 import './style.css'
 
 const PageContainer = styled(Container)`
   overflow: ${p => p.isNavOpen && "hidden"};
-  height: ${p => p.isNavOpen && "100vh"};
 `;
 
 const BlogTemplate = ({ data }) => {
@@ -24,7 +23,7 @@ const BlogTemplate = ({ data }) => {
     createdAt,
     blogContent
   } = data.post
-  const [copiedData, setCopiedData] = useRecoilState(dataAtom)
+  const [, setCopiedData] = useRecoilState(dataAtom)
   const isNavOpen = useRecoilValue(isNavOpenAtom);
   useEffect(() => {
     if (data) setCopiedData(data)
@@ -52,6 +51,7 @@ const BlogTemplate = ({ data }) => {
             documentToReactComponents(blogContent.json, optionsTypography)
           }
         </Container>
+        <Footer />
       </PageContainer>
     </>
   )
