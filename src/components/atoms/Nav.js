@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { isNavOpenAtom } from '../../recoil/atoms';
+import { isNavOpenAtom, isNavPrioritizedAtom } from '../../recoil/atoms';
 
 const Bar = styled.div`
 	height: 4px;
@@ -34,7 +34,16 @@ const Burger = styled.div`
 
 export const Nav = ({ width, widthHalf, justifyContentTop, justifyContentBot }) => {
 	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
-	const toggleNav = () => setIsNavOpen(!isNavOpen);
+	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
+	const toggleNav = () => {
+		setIsNavOpen(!isNavOpen);
+		if (isNavOpen) {
+			setTimeout(() => {
+				setIsNavPrioritized(!isNavPrioritized)
+			}, 500)
+		}
+		else setIsNavPrioritized(!isNavPrioritized)
+	};
 	return (
 		<Burger onClick={toggleNav}>
 			<BarContainer justifyContent={justifyContentTop}>

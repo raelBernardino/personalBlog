@@ -6,7 +6,6 @@ export const optionsTypography = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => {
       const { nodeType } = node;
-      console.log({nodeType})
       return <Typography  size="sm" tag={typographyRef[nodeType]}>{children}</Typography>
     }
   }

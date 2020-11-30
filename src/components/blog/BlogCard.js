@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from '../atoms';
+import { Container, Typography } from '../atoms';
 
 const Card = styled.div`
   min-height: 120px;
@@ -13,7 +13,9 @@ const Card = styled.div`
 const CardImage = styled.div`
   flex: 1;
   border-radius: 20px 0 0 20px;
-  background-color: #333;
+  background-image: url('${p => p.image}');
+  background-position: center;
+  background-size: cover;
   `;
 
 const CardInfo = styled.div`
@@ -21,13 +23,21 @@ const CardInfo = styled.div`
   border-radius: 0 0 20px 20px;
   box-sizing: border-box;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 
-export const BlogCard = () => (
+export const BlogCard = ({ image, createdAt, title, subtitle }) => (
   <Card>
-    <CardImage />
+    <CardImage image={image} />
     <CardInfo>
+      <Container padding="0">
+        <Typography size="md" weight="900">{subtitle.toUpperCase()}</Typography>
+        <Typography>{title.toUpperCase()}</Typography>
+      </Container>
+      <Typography size="xs">{createdAt.toUpperCase()}</Typography>
     </CardInfo>
   </Card>
 )

@@ -5,6 +5,11 @@ export const isNavOpenAtom = atom({
     default: false
 });
 
+export const isNavPrioritizedAtom = atom({
+    key: 'isNavPrioritized',
+    default: false
+});
+
 export const dataAtom = atom({
     key: 'data',
     default: null

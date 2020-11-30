@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
-import { isNavOpenAtom } from '../../recoil/atoms';
+import { isNavOpenAtom, isNavPrioritizedAtom } from '../../recoil/atoms';
 import { Container, Typography } from './'
 
 const drawerFadeAnimation = keyframes`
@@ -28,7 +28,7 @@ const DrawerContainer = styled.div`
 	height: 100vh;
 	position: fixed;
 	overflow: hidden;
-	z-index: 1;
+	z-index: ${p => p.zIndex && "1"};
 	animation-name: ${p => p.isNavOpen && drawerFadeAnimation};
 	animation-duration: 1s;
 	animation-iteration-count: 1;
@@ -44,10 +44,17 @@ const NavContent = styled(Container)`
 export const NavDrawer = () => {
 	const [subNavIsOpen, setSubNavIsOpen] = React.useState(false);
 	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
-	const closeNav = () => setIsNavOpen(false)
+	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
+	console.log({ isNavPrioritized })
+	const closeNav = () => {
+		setIsNavOpen(false)
+		setTimeout(() => {
+			setIsNavPrioritized(false)
+		}, 2000)
+	}
 
 	return (
-		<DrawerContainer isNavOpen={isNavOpen} onClick={closeNav}>
+		<DrawerContainer isNavOpen={isNavOpen} onClick={closeNav} zIndex={isNavPrioritized}>
 			<Drawer isNavOpen={isNavOpen}>
 				<Container>
 					<Typography size="xl" color="black" weight="900" padding="0 0 20px 0">EXPLORE</Typography>

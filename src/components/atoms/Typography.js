@@ -20,6 +20,7 @@ const StyledTypography = styled(({ tag, children, ...props }) => React.createEle
   color: ${p => p.color || "black"};
   line-height: 1.25;
   padding: ${p => p.padding};
+  text-decoration: none;
 `
 
 export const Typography = ({ children, tag, weight, size, color, padding }) => (
