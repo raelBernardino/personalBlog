@@ -48,9 +48,12 @@ export const NavDrawer = () => {
 	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
 	const closeNav = () => {
 		setIsNavOpen(false)
-		setTimeout(() => {
-			setIsNavPrioritized(false)
-		}, 2000)
+		if (isNavOpen) {
+			setTimeout(() => {
+				setIsNavPrioritized(false)
+			}, 500)
+		}
+		else setIsNavPrioritized(true)
 	}
 
 	return (

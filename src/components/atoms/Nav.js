@@ -39,10 +39,10 @@ export const Nav = ({ width, widthHalf, justifyContentTop, justifyContentBot }) 
 		setIsNavOpen(!isNavOpen);
 		if (isNavOpen) {
 			setTimeout(() => {
-				setIsNavPrioritized(!isNavPrioritized)
+				setIsNavPrioritized(false)
 			}, 500)
 		}
-		else setIsNavPrioritized(!isNavPrioritized)
+		else setIsNavPrioritized(true)
 	};
 	return (
 		<Burger onClick={toggleNav}>
