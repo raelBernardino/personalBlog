@@ -11,7 +11,8 @@ import { optionsTypography } from '../components/options'
 import './style.css'
 
 const PageContainer = styled(Container)`
-  overflow-y: ${p => p.overflowY};
+  overflow: ${p => p.isNavOpen && "hidden"};
+  height: ${p => p.isNavOpen && "100vh"};
 `;
 
 const BlogTemplate = ({ data }) => {
@@ -37,8 +38,8 @@ const BlogTemplate = ({ data }) => {
         justifyContentTop="flex-start"
         justifyContentBot="flex-end"
       />
-      <NavDrawer isNavOpen={isNavOpen} />
-      <PageContainer padding="0" overflowY={isNavOpen && "hidden"}>
+      <NavDrawer />
+      <PageContainer padding="0" isNavOpen={isNavOpen}>
         <BlogHeader
           image={image}
           title={title}
