@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
 import { isNavOpenAtom, isNavPrioritizedAtom } from '../../recoil/atoms';
@@ -45,7 +46,6 @@ export const NavDrawer = () => {
 	const [subNavIsOpen, setSubNavIsOpen] = React.useState(false);
 	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
 	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
-	console.log({ isNavPrioritized })
 	const closeNav = () => {
 		setIsNavOpen(false)
 		setTimeout(() => {
@@ -59,10 +59,9 @@ export const NavDrawer = () => {
 				<Container>
 					<Typography size="xl" color="black" weight="900" padding="0 0 20px 0">EXPLORE</Typography>
 					<NavContent padding="0">
-						<Typography size="sm" color="black" weight="300">HOME</Typography>
-						<Typography size="sm" color="black" weight="300">VAN LIFE SERIES</Typography>
-						<Typography size="sm" color="black" weight="300">ABOUT</Typography>
-						<Typography size="sm" color="black" weight="300">PORTFOLIO</Typography>
+						<Link to="/blog">
+							<Typography size="sm" color="black" weight="300">BLOG</Typography>
+						</Link>
 					</NavContent>
 				</Container>
 			</Drawer>

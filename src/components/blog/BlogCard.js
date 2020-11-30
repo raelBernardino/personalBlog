@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container, Typography } from '../atoms';
 
 const Card = styled.div`
-  min-height: 120px;
+  min-height: 110px;
   width: 100%;
   display: flex;
   border-radius: 20px;
@@ -12,6 +12,7 @@ const Card = styled.div`
 
 const CardImage = styled.div`
   flex: 1;
+  min-width: 115px;
   border-radius: 20px 0 0 20px;
   background-image: url('${p => p.image}');
   background-position: center;
