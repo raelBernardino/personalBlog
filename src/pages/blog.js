@@ -22,6 +22,8 @@ const BlogCardContainer = styled(Container)`
 		margin-top: 60px;
 	}
 	padding: 5px 5px 20px 5px;
+	max-height: 600px
+	overflow-y: auto;
 `;
 
 const BlogContainer = styled(Container)`
