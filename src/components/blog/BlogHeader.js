@@ -36,7 +36,7 @@ export const BlogHeader = ({
             {title.toUpperCase()}
           </Typography>
           <Typography color="white" weight="300" size="md">
-            {subTitle.toUpperCase()}
+            {subtitle.toUpperCase()}
           </Typography>
         </Container>
       </Overlay>
