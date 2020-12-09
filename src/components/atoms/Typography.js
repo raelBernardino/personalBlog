@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const size = {
+  xxl: "64px",
   xl: "42px",
   lg: "36px",
   md: "24px",
@@ -21,15 +22,17 @@ const StyledTypography = styled(({ tag, children, ...props }) => React.createEle
   line-height: 1.25;
   padding: ${p => p.padding};
   text-decoration: none;
+  margin: ${p => p.margin};
 `
 
-export const Typography = ({ children, tag, weight, size, color, padding }) => (
+export const Typography = ({ children, tag, weight, size, color, padding, margin }) => (
   <StyledTypography
     tag={tag || "span"}
     weight={weight}
     size={size}
     color={color}
     padding={padding}
+    margin={margin}
   >
     {children}
   </StyledTypography>
