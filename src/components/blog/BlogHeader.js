@@ -33,10 +33,10 @@ export const BlogHeader = ({
             {createdAt.toUpperCase()}
           </Typography>
           <Typography color="white" weight="900" size="xl">
-            {subtitle.toUpperCase()}
+            {title.toUpperCase()}
           </Typography>
           <Typography color="white" weight="300" size="md">
-            {title.toUpperCase()}
+            {subTitle.toUpperCase()}
           </Typography>
         </Container>
       </Overlay>
