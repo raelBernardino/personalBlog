@@ -28,7 +28,7 @@ const IndexPage = () => (
     <Container height="40%" padding="32px">
         <Typography size="xxl" weight="900" color="#333">HELLO,</Typography>
         <Typography size="xxl" weight="900" color="#333" margin="-10px 0 0 0">I'M RAEL</Typography>
-      <Container padding="15px 0 20px 0" justifyContent="flex-end">
+      <Container justifyContent="flex-end">
         <Typography size="24px" color="#333" weight="300">DEVELOPER</Typography>
         <Typography size="24px" color="#333" weight="300">UI/UX DESIGNER</Typography>
         <Typography size="24px" color="#333" weight="300">FREELANCE</Typography>
