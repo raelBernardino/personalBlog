@@ -35,8 +35,8 @@ export const BlogCard = ({ image, createdAt, title, subtitle }) => (
     <CardImage image={image} />
     <CardInfo>
       <Container padding="0">
-        <Typography size="md" weight="900">{subtitle.toUpperCase()}</Typography>
-        <Typography>{title.toUpperCase()}</Typography>
+        <Typography size="md" weight="900">{title.toUpperCase()}</Typography>
+        <Typography>{subtitle.toUpperCase()}</Typography>
       </Container>
       <Typography size="xs">{createdAt.toUpperCase()}</Typography>
     </CardInfo>
