@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, Typography, Nav, NavDrawer, Image } from '../components/atoms'
-import mainimg from '../../public/main.jpg'
+import mainimg from '../images/main.jpg'
 
 const CurvedImage = styled(Image)`
   padding: 20px;
