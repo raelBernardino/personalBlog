@@ -22,10 +22,10 @@ const IndexPage = () => (
       justifyContentBot="flex-end"
     />
     <NavDrawer />
-    <CurvedImage src={mainimg} height="60vh">
+    <CurvedImage src={mainimg} height="60%">
       <Typography size="xl" color="white" weight="900">HOME</Typography>
     </CurvedImage>
-    <Container height="40vh" padding="32px">
+    <Container height="40%" padding="32px">
         <Typography size="xxl" weight="900" color="#333">HELLO,</Typography>
         <Typography size="xxl" weight="900" color="#333" margin="-10px 0 0 0">I'M RAEL</Typography>
       <Container padding="15px 0 20px 0" justifyContent="flex-end">
