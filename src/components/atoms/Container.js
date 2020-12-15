@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: ${p => p.height || "100%"};
   display: flex;
   flex-direction: column;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto', sans-serif;
   position: relative;
   justify-content: ${p => p.justifyContent};
   align-items: ${p => p.alignItems};
