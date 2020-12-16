@@ -35,6 +35,7 @@ const NoBlogsContainer = styled(Container)`
 `;
 
 export default ({ data }) => {
+	console.log({data})
 	const isNavOpen = useRecoilValue(isNavOpenAtom);
 	const [filteredPosts, setFilteredPosts] = useState([])
 	const [currentTag, setCurrentTag] = useState("all")
@@ -42,14 +43,9 @@ export default ({ data }) => {
 	const bannerImage = posts[0].node.image.fluid.src
 	const tags = data.allContentfulBlogTags.edges
 
-	console.log(tags)
-
 	useEffect(() => {
 		data && setFilteredPosts(posts)
 	}, [data])
-
-
-	console.log({ currentTag })
 
 	const filterPosts = (tag) => {
 		let tempFilteredPost = posts

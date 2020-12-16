@@ -67,6 +67,9 @@ export const NavDrawer = () => {
 						<Link to="/blog">
 							<Typography size="sm" color="black" weight="300">BLOG</Typography>
 						</Link>
+						<Link to="/analog">
+							<Typography size="sm" color="black" weight="300">ANALOG</Typography>
+						</Link>
 					</NavContent>
 				</Container>
 			</Drawer>

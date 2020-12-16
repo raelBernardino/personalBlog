@@ -13,4 +13,5 @@ export const Container = styled.div`
   padding: ${p => p.padding || "20px"};
   box-sizing: border-box;
   overflow-x: hidden;
+  background-color: ${p => p.backgroundColor}
 `;

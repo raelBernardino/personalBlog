@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { Container, Typography } from './';
 import { FaFacebookSquare, FaInstagram, FaGithub } from 'react-icons/fa'
 
