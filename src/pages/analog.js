@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Container, Typography, Button, Nav, NavDrawer, Footer } from '../components/atoms'
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { FilmGallery } from '../components/analog'
 import analog from '../images/analog.jpg'
 
@@ -32,7 +33,9 @@ const IndexPage = ({ data }) => {
         <Typography size="24px" color="white" weight="300">AND I SHOOT FILM SOMETIMES.</Typography>
         <Typography size="24px" color="white" weight="300">35MM.</Typography>
         <Container padding="100px 0 20px 0" height="auto" width="auto" alignItems="center">
-          <Button theme="dark" fontSize="xs">VIEW</Button>
+          <AnchorLink href="#gallery">
+            <Button theme="dark" fontSize="xs">VIEW</Button>
+          </AnchorLink>
         </Container>
       </ImageContainer>
       <FilmGallery gallery={gallery} />

@@ -12,7 +12,7 @@ export const FilmGallery = ({ gallery }) => {
   const photoGallery = gallery
   console.log(photoGallery)
   return (
-    <Container>
+    <Container id="gallery">
       <Container padding="0">
         {
           photoGallery.map((photo, i) => (
