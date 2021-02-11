@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import styled from 'styled-components';
 import { Nav, NavDrawer, NavBar, Typography, Container, Chip, Footer } from '../components/atoms'
 import { BlogCard, BlogBanner } from '../components/blog'
-import { useWindowDimensions } from '../hooks'
+import { useWindowSize } from '../hooks'
 
 const BlogLink = styled(Link)`
 `;
@@ -43,13 +43,12 @@ const NoBlogsContainer = styled(Container)`
 `;
 
 export default ({ data }) => {
-  const { width } = useWindowDimensions()
   const [filteredPosts, setFilteredPosts] = useState([])
   const [currentTag, setCurrentTag] = useState("all")
   const posts = data.allContentfulPost.edges
   const bannerImage = posts[0].node.image.fluid.src
   const tags = data.allContentfulBlogTags.edges
-
+  const { width } = useWindowSize()
   useEffect(() => {
     data && setFilteredPosts(posts)
   }, [data])

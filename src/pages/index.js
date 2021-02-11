@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Container, Typography, Nav, NavDrawer, NavBar, Image } from '../components/atoms'
 import mainimg from '../images/main.jpg'
-import { useWindowDimensions } from '../hooks'
+import { useWindowSize } from '../hooks'
 
 
 const HomeContainer = styled(Container)`
@@ -50,7 +50,7 @@ const HeaderTypography = styled.span`
 `;
 
 const IndexPage = () => {
-  const { width } = useWindowDimensions()
+  const { width } = useWindowSize()
   return (
     <HomeContainer padding="0" height="100vh" width="100%">
       { width > 749 ?

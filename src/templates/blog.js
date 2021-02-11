@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
-import { useWindowDimensions } from '../hooks'
+import { useWindowSize } from '../hooks'
 import { dataAtom, isNavOpenAtom } from '../recoil/atoms'
 import { Container, Nav, NavDrawer, NavBar, Footer } from '../components/atoms'
 import { BlogHeader } from '../components/blog'
@@ -24,9 +24,9 @@ const BlogTemplate = ({ data }) => {
     createdAt,
     blogContent
   } = data.post
-  const { width } = useWindowDimensions()
   const [, setCopiedData] = useRecoilState(dataAtom)
   const isNavOpen = useRecoilValue(isNavOpenAtom);
+  const { width } = useWindowSize()
   useEffect(() => {
     if (data) setCopiedData(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container, Typography, Image } from '../atoms'
-import { useWindowDimensions } from '../../hooks'
+import { useWindowSize } from '../../hooks'
 
 const Overlay = styled(Container)`
   width: 100%;
@@ -34,7 +34,7 @@ export const BlogHeader = ({
   subtitle,
   author,
   createdAt }) => {
-  const { width } = useWindowDimensions()
+  const { width } = useWindowSize()
   return (
     <>
       {width > 749 &&

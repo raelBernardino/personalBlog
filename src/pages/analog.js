@@ -4,7 +4,7 @@ import { Container, Typography, Button, Nav, NavDrawer, NavBar, Footer } from '.
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { FilmGallery } from '../components/analog';
 import analog from '../images/analog.jpg';
-import { useWindowDimensions } from '../hooks';
+import { useWindowSize } from '../hooks';
 
 const ImageContainer = styled(Container)`
   background-image: url("${p => p.src}");
@@ -13,7 +13,7 @@ const ImageContainer = styled(Container)`
 
 const IndexPage = ({ data }) => {
   const gallery = data.allContentfulFilmPhoto.edges
-  const { width } = useWindowDimensions()
+  const { width } = useWindowSize()
   return (
     <Container padding="0" width="100%">
       { width > 749 ?
