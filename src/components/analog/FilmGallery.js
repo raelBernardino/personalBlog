@@ -19,11 +19,11 @@ const Gallery = styled(Container)`
   flex-wrap: wrap;
   justify-content: center;
   @media screen and (min-width: 750px) {
-  }
-  > * {
-    max-width: 100%;
-    height: 585px;
-    margin-right: 1.45rem;
+    > * {
+      max-width: 100%;
+      height: 585px;
+      margin-right: 1.45rem;
+    }
   }
 `;
 
