@@ -8,12 +8,12 @@ const Card = styled.div`
   display: flex;
   border-radius: 20px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
-  @media screen and (min-width: 750px) {
-    min-height: 200px;
-  }
   @media screen and (min-width: 1000px) {
     min-height: 225px;
     width: 1125px;
+  }
+  @media screen and (min-width: 750px) {
+    min-height: 200px;
   }
 `;
 

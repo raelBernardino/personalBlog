@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Typography, Button } from '../atoms'
 import { Link } from 'gatsby';
+import { useWindowSize } from '../../hooks'
 
 const Banner = styled.div`
   width: 100%;
@@ -42,18 +43,21 @@ const BannerText = styled.div`
 `;
 
 export const BlogBanner = ({ url, posts }) => {
+  const { width } = useWindowSize()
   return (
     <Container padding="0">
       <Banner url={url} >
-        <BannerOverlay>
-          <BannerText>
-            <Typography color="white" weight="800" size="xxl">{posts[0].node.title.toUpperCase()}</Typography>
-            <Typography color="white" weight="300" size="xl">{posts[0].node.subtitle.toUpperCase()}</Typography>
-          </BannerText>
-          <Link to={`/blog/${posts[0].node.slug}`}>
-            <Button width="175px" height="64px" fontSize="15px">READ</Button>
-          </Link>
-        </BannerOverlay>
+        {width > 749 &&
+          <BannerOverlay>
+            <BannerText>
+              <Typography color="white" weight="800" size="xxl">{posts[0].node.title.toUpperCase()}</Typography>
+              <Typography color="white" weight="300" size="xl">{posts[0].node.subtitle.toUpperCase()}</Typography>
+            </BannerText>
+            <Link to={`/blog/${posts[0].node.slug}`}>
+              <Button width="175px" height="64px" fontSize="15px">READ</Button>
+            </Link>
+          </BannerOverlay>
+        }
       </Banner>
     </Container>
   )

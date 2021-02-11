@@ -84,7 +84,7 @@ export default ({ data }) => {
         {width < 750 && <Typography color="black" size="xl" weight="900" padding="0 0 20px 0">BLOGS</Typography>}
         <BlogBanner url={bannerImage} posts={posts}>
         </BlogBanner>
-        <Container padding={width > 749 && "0 50px 0 50px"} minHeight="80px">
+        <Container padding={width > 749 ?  "0 50px 0 50px" : "0"} minHeight="80px">
           <ChipContainer>
             <Chip label="ALL" onClick={() => filterPosts("all")} isSelected={"all" === currentTag ? true : false} />
             {
