@@ -4,8 +4,9 @@ import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
+import { useWindowDimensions } from '../hooks'
 import { dataAtom, isNavOpenAtom } from '../recoil/atoms'
-import { Container, Nav, NavDrawer, Footer } from '../components/atoms'
+import { Container, Nav, NavDrawer, NavBar, Footer } from '../components/atoms'
 import { BlogHeader } from '../components/blog'
 import { optionsTypography } from '../components/options'
 import './style.css'
@@ -23,6 +24,7 @@ const BlogTemplate = ({ data }) => {
     createdAt,
     blogContent
   } = data.post
+  const { width } = useWindowDimensions()
   const [, setCopiedData] = useRecoilState(dataAtom)
   const isNavOpen = useRecoilValue(isNavOpenAtom);
   useEffect(() => {
@@ -31,13 +33,19 @@ const BlogTemplate = ({ data }) => {
   }, [data])
   return (
     <>
-      <Nav
-        width="25px"
-        widthHalf="12.5px"
-        justifyContentTop="flex-start"
-        justifyContentBot="flex-end"
-      />
-      <NavDrawer />
+      { width > 749 ?
+        <NavBar />
+        :
+        <>
+          <Nav
+            width="25px"
+            widthHalf="12.5px"
+            justifyContentTop="flex-start"
+            justifyContentBot="flex-end"
+          />
+          <NavDrawer />
+        </>
+      }
       <PageContainer padding="0" isNavOpen={isNavOpen}>
         <BlogHeader
           image={image}
@@ -46,7 +54,7 @@ const BlogTemplate = ({ data }) => {
           author={author}
           createdAt={createdAt}
         />
-        <Container>
+        <Container padding={width > 749 && "50px 25%"}>
           {
             documentToReactComponents(blogContent.json, optionsTypography)
           }

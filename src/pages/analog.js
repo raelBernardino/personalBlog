@@ -1,9 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import { Container, Typography, Button, Nav, NavDrawer, Footer } from '../components/atoms'
+import React from "react";
+import styled from "styled-components";
+import { Container, Typography, Button, Nav, NavDrawer, NavBar, Footer } from '../components/atoms';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { FilmGallery } from '../components/analog'
-import analog from '../images/analog.jpg'
+import { FilmGallery } from '../components/analog';
+import analog from '../images/analog.jpg';
+import { useWindowDimensions } from '../hooks';
 
 const ImageContainer = styled(Container)`
   background-image: url("${p => p.src}");
@@ -12,15 +13,22 @@ const ImageContainer = styled(Container)`
 
 const IndexPage = ({ data }) => {
   const gallery = data.allContentfulFilmPhoto.edges
+  const { width } = useWindowDimensions()
   return (
     <Container padding="0" width="100%">
-      <Nav
-        width="25px"
-        widthHalf="12.5px"
-        justifyContentTop="flex-start"
-        justifyContentBot="flex-end"
-      />
-      <NavDrawer />
+      { width > 749 ?
+        <NavBar light />
+        :
+        <>
+          <Nav
+            width="25px"
+            widthHalf="12.5px"
+            justifyContentTop="flex-start"
+            justifyContentBot="flex-end"
+          />
+          <NavDrawer />
+        </>
+      }
       <ImageContainer
         justifyContent="center"
         alignItems="center"
@@ -34,7 +42,7 @@ const IndexPage = ({ data }) => {
         <Typography size="24px" color="white" weight="300">35MM.</Typography>
         <Container padding="100px 0 20px 0" height="auto" width="auto" alignItems="center">
           <AnchorLink href="#gallery">
-            <Button theme="dark" fontSize="xs">VIEW</Button>
+            <Button theme="dark" fontSize="xxs" padding="30px 75px">VIEW</Button>
           </AnchorLink>
         </Container>
       </ImageContainer>

@@ -1,7 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import { Container, Typography, Nav, NavDrawer, Image } from '../components/atoms'
+import { Container, Typography, Nav, NavDrawer, NavBar, Image } from '../components/atoms'
 import mainimg from '../images/main.jpg'
+import { useWindowDimensions } from '../hooks'
+
+
+const HomeContainer = styled(Container)`
+  width: 100%;
+  @media screen and (min-width: 750px) {
+    flex-direction: row;
+  }
+`
 
 const CurvedImage = styled(Image)`
   padding: 20px;
@@ -11,30 +20,66 @@ const CurvedImage = styled(Image)`
   background-position: 70%;
   background-size: 175%;
   background-position-y: 13%;
+  @media screen and (min-width: 750px) {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    border-radius: 0;
+  }
 `;
 
-const IndexPage = () => (
-  <Container padding="0" height="100vh" width="100%">
-    <Nav
-      width="25px"
-      widthHalf="12.5px"
-      justifyContentTop="flex-start"
-      justifyContentBot="flex-end"
-    />
-    <NavDrawer />
-    <CurvedImage src={mainimg} height="60%">
-      <Typography size="xl" color="white" weight="900">HOME</Typography>
-    </CurvedImage>
-    <Container height="40%" padding="32px">
-        <Typography size="xxl" weight="900" color="#333">HELLO,</Typography>
-        <Typography size="xxl" weight="900" color="#333" margin="-10px 0 0 0">I'M RAEL</Typography>
-      <Container justifyContent="flex-end" padding="0">
-        <Typography size="24px" color="#333" weight="300">DEVELOPER</Typography>
-        <Typography size="24px" color="#333" weight="300">UI/UX DESIGNER</Typography>
-        <Typography size="24px" color="#333" weight="300">FREELANCE</Typography>
-      </Container>
-    </Container>
-  </Container>
-)
+const TextContainer = styled(Container)`
+  height: 40%;
+  @media screen and (min-width: 750px) {
+    height: 100%;
+    justify-content: flex-end;
+  }
+`;
+
+const HeaderTypography = styled.span`
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  line-height: 1.25;
+  font-size: 64px;
+  @media screen and (min-width: 950px) {
+    font-size: 80px;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 132px;
+  }
+`;
+
+const IndexPage = () => {
+  const { width } = useWindowDimensions()
+  return (
+    <HomeContainer padding="0" height="100vh" width="100%">
+      { width > 749 ?
+        <NavBar light />
+        :
+        <>
+          <Nav
+            width="25px"
+            widthHalf="12.5px"
+            justifyContentTop="flex-start"
+            justifyContentBot="flex-end"
+          />
+          <NavDrawer />
+        </>
+      }
+      <CurvedImage src={mainimg} height="60%" width={width}>
+        {width < 750 && <Typography size="xl" color="white" weight="900">HOME</Typography>}
+      </CurvedImage>
+      <TextContainer padding="32px">
+        <HeaderTypography weight="900" color="#333">HELLO,</HeaderTypography>
+        <HeaderTypography weight="900" color="#333" margin="-10px 0 0 0">I'M RAEL</HeaderTypography>
+        <Container height={width > 749 && "auto"} justifyContent="flex-end" padding="0">
+          <Typography size="24px" color="#333" weight="300">DEVELOPER</Typography>
+          <Typography size="24px" color="#333" weight="300">UI/UX DESIGNER</Typography>
+          <Typography size="24px" color="#333" weight="300">FREELANCE</Typography>
+        </Container>
+      </TextContainer>
+    </HomeContainer>
+  )
+}
 
 export default IndexPage
