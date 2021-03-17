@@ -18,9 +18,9 @@ const Gallery = styled(Container)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
   @media screen and (min-width: 750px) {
     > * {
-      max-width: 100%;
       height: 585px;
       margin-right: 1.45rem;
     }
