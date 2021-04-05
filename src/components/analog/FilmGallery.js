@@ -20,12 +20,12 @@ const Gallery = styled(Container)`
   justify-content: center;
   width: 100%;
   height: auto;
-  /* @media screen and (min-width: 750px) {
+  @media screen and (min-width: 750px) {
     > * {
       height: 585px;
       margin-right: 1.45rem;
     }
-  } */
+  }
 `;
 
 export const FilmGallery = ({ gallery }) => {
@@ -35,7 +35,7 @@ export const FilmGallery = ({ gallery }) => {
       <Gallery padding="0">
         {
           photoGallery.map((photo, i) => (
-            <img key={i} alt="not available" src={photo.node.filmPhoto[0].fluid.src} />
+            <img width="100%" key={i} alt="not available" src={photo.node.filmPhoto[0].fluid.src} />
           ))
         }
       </Gallery>
