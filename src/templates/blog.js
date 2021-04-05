@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -27,13 +27,18 @@ const BlogTemplate = ({ data }) => {
   const [, setCopiedData] = useRecoilState(dataAtom)
   const isNavOpen = useRecoilValue(isNavOpenAtom);
   const { width } = useWindowSize()
+  const [screenWidth, setScreenWidth] = useState(null)
+  useEffect(() => {
+    setScreenWidth(screenWidth)
+  }, [width])
+
   useEffect(() => {
     if (data) setCopiedData(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
   return (
     <>
-      { width > 749 ?
+      { screenWidth > 749 ?
         <NavBar />
         :
         <>
@@ -54,7 +59,7 @@ const BlogTemplate = ({ data }) => {
           author={author}
           createdAt={createdAt}
         />
-        <Container padding={width > 749 && "50px 25%"}>
+        <Container padding={screenWidth > 749 && "50px 25%"}>
           {
             documentToReactComponents(blogContent.json, optionsTypography)
           }

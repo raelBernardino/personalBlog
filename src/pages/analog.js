@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Container, Typography, Button, Nav, NavDrawer, NavBar, Footer } from '../components/atoms';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -14,9 +14,14 @@ const ImageContainer = styled(Container)`
 const IndexPage = ({ data }) => {
   const gallery = data.allContentfulFilmPhoto.edges
   const { width } = useWindowSize()
+  const [screenWidth, setScreenWidth] = useState(null)
+
+  useEffect(() => {
+    setScreenWidth(screenWidth)
+  }, [width])
   return (
     <Container padding="0" width="100%">
-      { width > 749 ?
+      { screenWidth > 749 ?
         <NavBar light />
         :
         <>

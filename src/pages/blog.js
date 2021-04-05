@@ -49,6 +49,12 @@ export default ({ data }) => {
   const bannerImage = posts[0].node.image.fluid.src
   const tags = data.allContentfulBlogTags.edges
   const { width } = useWindowSize()
+  const [screenWidth, setScreenWidth] = useState(null)
+
+  useEffect(() => {
+    setScreenWidth(screenWidth)
+  }, [width])
+
   useEffect(() => {
     data && setFilteredPosts(posts)
   }, [data])
@@ -67,7 +73,7 @@ export default ({ data }) => {
 
   return (
     <>
-      { width > 749 ?
+      { screenWidth > 749 ?
         <NavBar />
         :
         <>
@@ -81,10 +87,10 @@ export default ({ data }) => {
         </>
       }
       <BlogContainer>
-        {width < 750 && <Typography color="black" size="xl" weight="900" padding="0 0 20px 0">BLOGS</Typography>}
+        {screenWidth < 750 && <Typography color="black" size="xl" weight="900" padding="0 0 20px 0">BLOGS</Typography>}
         <BlogBanner url={bannerImage} posts={posts}>
         </BlogBanner>
-        <Container padding={width > 749 ?  "0 50px 0 50px" : "0"} minHeight="80px">
+        <Container padding={screenWidth > 749 ? "0 50px 0 50px" : "0"} minHeight="80px">
           <ChipContainer>
             <Chip label="ALL" onClick={() => filterPosts("all")} isSelected={"all" === currentTag ? true : false} />
             {
