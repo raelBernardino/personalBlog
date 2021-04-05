@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { Container, Typography, Nav, NavDrawer, NavBar, Image } from '../components/atoms'
 import mainimg from '../images/main.jpg'
@@ -51,9 +51,15 @@ const HeaderTypography = styled.span`
 
 const IndexPage = () => {
   const { width } = useWindowSize()
+  const [screenWidth, setScreenWidth] = useState(null)
+
+  useEffect(() => {
+    setScreenWidth(screenWidth)
+  }, [width])
+
   return (
     <HomeContainer padding="0" height="100vh" width="100%">
-      { width > 749 ?
+      { screenWidth > 749 ?
         <NavBar light />
         :
         <>
@@ -67,7 +73,7 @@ const IndexPage = () => {
         </>
       }
       <CurvedImage src={mainimg} height="60%" width={width}>
-        {width < 750 && <Typography size="xl" color="white" weight="900">HOME</Typography>}
+        {screenWidth < 750 && <Typography size="xl" color="white" weight="900">HOME</Typography>}
       </CurvedImage>
       <TextContainer padding="32px">
         <HeaderTypography weight="900" color="#333">HELLO,</HeaderTypography>
