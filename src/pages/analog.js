@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container, Typography, Button, Nav, NavDrawer, NavBar, Footer } from '../components/atoms';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
