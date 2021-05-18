@@ -34,7 +34,7 @@ const BlogCardContainer = styled(Container)`
 const BlogContainer = styled(Container)`
 	min-height: 100vh;
   @media screen and (min-width: 750px) {
-    padding: 100px 50px 20px 50px;
+    padding: 50px 50px 20px 50px;
   }
 `;
 

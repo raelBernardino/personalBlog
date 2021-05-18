@@ -45,11 +45,6 @@ const IndexPage = ({ data }) => {
         <Typography size="xxl" weight="900" color="white" margin="-10px 0 0 0">I'M RAEL</Typography>
         <Typography size="24px" color="white" weight="300">AND I SHOOT FILM SOMETIMES.</Typography>
         <Typography size="24px" color="white" weight="300">35MM.</Typography>
-        <Container padding="100px 0 20px 0" height="auto" width="auto" alignItems="center">
-          <AnchorLink href="#gallery">
-            <Button theme="dark" fontSize="xxs" padding="30px 75px">VIEW</Button>
-          </AnchorLink>
-        </Container>
       </ImageContainer>
       <FilmGallery gallery={gallery} />
       <Footer />
