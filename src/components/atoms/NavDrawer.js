@@ -43,36 +43,33 @@ const NavContent = styled(Container)`
 `;
 
 export const NavDrawer = () => {
-	const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
-	const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
-	const closeNav = () => {
-		setIsNavOpen(false)
-		if (isNavOpen) {
-			setTimeout(() => {
-				setIsNavPrioritized(false)
-			}, 500)
-		}
-		else setIsNavPrioritized(true)
-	}
+  const [isNavOpen, setIsNavOpen] = useRecoilState(isNavOpenAtom);
+  const [isNavPrioritized, setIsNavPrioritized] = useRecoilState(isNavPrioritizedAtom);
+  const closeNav = () => {
+    setIsNavOpen(false)
+    if (isNavOpen) {
+      setTimeout(() => {
+        setIsNavPrioritized(false)
+      }, 500)
+    }
+    else setIsNavPrioritized(true)
+  }
 
-	return (
-		<DrawerContainer isNavOpen={isNavOpen} onClick={closeNav} zIndex={isNavPrioritized}>
-			<Drawer isNavOpen={isNavOpen}>
-				<Container>
-					<Typography size="xl" color="black" weight="900" padding="0 0 20px 0">EXPLORE</Typography>
-					<NavContent padding="0">
-						<Link to="/">
-							<Typography size="sm" color="black" weight="300">HOME</Typography>
-						</Link>
-						<Link to="/blog">
-							<Typography size="sm" color="black" weight="300">BLOG</Typography>
-						</Link>
-						<Link to="/analog">
-							<Typography size="sm" color="black" weight="300">ANALOG</Typography>
-						</Link>
-					</NavContent>
-				</Container>
-			</Drawer>
-		</DrawerContainer>
-	)
+  return (
+    <DrawerContainer isNavOpen={isNavOpen} onClick={closeNav} zIndex={isNavPrioritized}>
+      <Drawer isNavOpen={isNavOpen}>
+        <Container>
+          <Typography size="xl" color="black" weight="900" padding="0 0 20px 0">EXPLORE</Typography>
+          <NavContent padding="0">
+            <Link to="/">
+              <Typography size="sm" color="black" weight="300">HOME</Typography>
+            </Link>
+            <Link to="/blog">
+              <Typography size="sm" color="black" weight="300">BLOG</Typography>
+            </Link>
+          </NavContent>
+        </Container>
+      </Drawer>
+    </DrawerContainer>
+  )
 }

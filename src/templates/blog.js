@@ -15,6 +15,12 @@ const PageContainer = styled(Container)`
   overflow: ${p => p.isNavOpen && "hidden"};
 `;
 
+const BlogContainer = styled(Container)`
+  @media only screen and (min-width: 1200px) {
+    padding: 50px 25%;
+  }
+`
+
 const BlogTemplate = ({ data }) => {
   const {
     image,
@@ -59,11 +65,11 @@ const BlogTemplate = ({ data }) => {
           author={author}
           createdAt={createdAt}
         />
-        <Container padding={screenWidth > 749 && "50px 25%"}>
+        <BlogContainer >
           {
             documentToReactComponents(blogContent.json, optionsTypography)
           }
-        </Container>
+        </BlogContainer>
         <Footer />
       </PageContainer>
     </>

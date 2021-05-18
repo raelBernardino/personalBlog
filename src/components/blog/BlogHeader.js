@@ -21,11 +21,11 @@ const BlogImage = styled(Image)`
 
 const BlogDesktopHeader = styled(Container)`
   width: 100%;
-  padding: 75px 25px 0 25px;
+  padding: 25px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 375px;
+  min-height: 300px;
 `;
 
 export const BlogHeader = ({
