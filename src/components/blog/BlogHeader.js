@@ -40,40 +40,40 @@ export const BlogHeader = ({
       {width > 749 &&
         <BlogDesktopHeader>
           <Typography weight="900" size="xxl">
-            {title.toUpperCase()}
+            {title?.toUpperCase()}
           </Typography>
           <Typography weight="300" size="md">
-            {subtitle.toUpperCase()}
+            {subtitle?.toUpperCase()}
           </Typography>
           <Typography weight="300" size="sm" margin="5px 0 15px 0">
-            {createdAt.toUpperCase()}
+            {createdAt?.toUpperCase()}
           </Typography>
           <Typography weight="300" size="xs">
             WRITTEN BY
         </Typography>
           <Typography weight="300" size="xs">
-            {author.toUpperCase()}
+            {author?.toUpperCase()}
           </Typography>
         </BlogDesktopHeader>
       }
-      <BlogImage src={image.fluid.src} width="100%" height="50vh" size="cover">
+      <BlogImage src={image?.fluid.src} width="100%" height="50vh" size="cover">
         {width < 750 &&
           <Overlay>
             <Typography color="white" weight="300" size="xs">
               WRITTEN BY
     </Typography>
             <Typography color="white" weight="300" size="xs">
-              {author.toUpperCase()}
+              {author?.toUpperCase()}
             </Typography>
             <Container padding="0" justifyContent="flex-end">
               <Typography color="white" weight="300" size="xs">
-                {createdAt.toUpperCase()}
+                {createdAt?.toUpperCase()}
               </Typography>
               <Typography color="white" weight="900" size="xl">
-                {title.toUpperCase()}
+                {title?.toUpperCase()}
               </Typography>
               <Typography color="white" weight="300" size="md">
-                {subtitle.toUpperCase()}
+                {subtitle?.toUpperCase()}
               </Typography>
             </Container>
           </Overlay>
